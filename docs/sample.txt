@@ -1,0 +1,4 @@
+FastAPI is a fast web framework for Python that supports async.
+Docker is a tool for containerizing applications.
+Python is a popular and simple programming language.
+LangChain is a library for building LLM-powered applications.
