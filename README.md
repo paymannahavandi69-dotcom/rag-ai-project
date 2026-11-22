@@ -1,89 +1,70 @@
-Raj AI – Retrieval-Augmented Generation (RAG) Chatbot
-Overview
-Raj AI is an AI-powered Retrieval-Augmented Generation (RAG) application that allows users to ask questions about their own documents and receive context-aware answers.
+# 🤖 RAG Chatbot Project
 
-The system retrieves relevant information from uploaded documents and uses a Large Language Model (LLM) to generate answers based on the retrieved content.
+An intelligent conversational system built with Retrieval-Augmented Generation (RAG). The system retrieves relevant information from uploaded documents and uses a Large Language Model (LLM) to generate accurate, document-grounded responses, reducing unsupported or irrelevant answers. The goal is to provide accurate, document-grounded responses while reducing unsupported or irrelevant answers.
 
-The goal is to provide accurate, document-grounded responses while reducing unsupported or irrelevant answers.
+## ✨ Key Features
+- **Document Loading:** Supports PDF and TXT documents.
+- **Text Processing:** Splits documents into smaller chunks with configurable overlap for better semantic search.
+- **Vector Database:** Stores and retrieves document embeddings using ChromaDB to find the most relevant context.
+- **LLM Integration:** Uses Groq API for fast and AI-powered response generation.
+- **REST API:** Provides a robust API endpoint through FastAPI.
+- **Chat Interface:** Offers an interactive chat UI built with Streamlit.
+- **Context-Aware Responses:** Generates answers based strictly on the retrieved document content.
 
-Key Features
-Document Loading: Supports PDF and TXT documents.
-Text Processing: Splits documents into smaller chunks with configurable overlap.
-Semantic Search: Uses Hugging Face embeddings to find relevant information.
-Vector Database: Stores and retrieves document embeddings using ChromaDB.
-LLM Integration: Uses Groq API for AI-powered response generation.
-REST API: Provides an API endpoint through FastAPI.
-Chat Interface: Offers an interactive chatbot interface built with Streamlit.
-Context-Aware Responses: Generates answers based on retrieved document content.
-Tech Stack
-Python
-LangChain
-FastAPI
-Streamlit
-Groq API
-Hugging Face
-ChromaDB
-Sentence Transformers
-Project Structure
-raj-ai-project/
-│
-├── app/
-│   ├── __init__.py
-│   ├── config.py
-│   ├── main.py
-│   ├── rag.py
-│   └── ui.py
-│
-├── docs/
-│   └── sample.txt
-│
-├── .env.example
-├── .gitignore
-└── requirements.txt
-How It Works
-Documents are loaded from the docs directory.
-Text is split into smaller chunks.
-Hugging Face converts text chunks into embeddings.
-ChromaDB stores the vector representations.
-A retriever finds the most relevant document chunks for each question.
-Groq generates a response using the retrieved context.
-FastAPI handles requests, while Streamlit provides the user interface.
-Configuration
-Create a .env file in the project root and add your Groq API key:
+## 🛠️ Tech Stack
+- **Python** & **LangChain**
+- **FastAPI** (Backend API)
+- **Streamlit** (Frontend UI)
+- **Groq API** (LLM)
+- **Hugging Face** (Embeddings)
+- **ChromaDB** (Vector Database)
 
-GROQ_API_KEY=your_api_key_here
-Never commit your actual API key or other sensitive credentials to GitHub.
+## 📂 Project Structure
+    rag-ai-project/
+    │
+    ├── app/
+    │   ├── __init__.py
+    │   ├── config.py
+    │   ├── main.py
+    │   ├── rag.py
+    │   └── ui.py
+    ├── docs/
+    │   └── sample.txt
+    ├── .env.example
+    ├── .gitignore
+    ├── requirements.txt
+    └── README.md
 
-API Endpoint
-POST /ask
+## ⚙️ How it Works
+1. Documents are loaded from the **docs** directory.
+2. Text is split into smaller chunks.
+3. Hugging Face creates embeddings for the chunks, which are stored in ChromaDB.
+4. A retriever finds the most relevant document chunks for each question.
+5. Groq generates a response using the retrieved context.
+6. FastAPI handles requests, while Streamlit provides the user interface.
 
-Example request:
+## 🚀 Setup & Configuration
+Create a **.env** file in the project root and add your Groq API key:
 
-{
-  "question": "What is this document about?"
-}
-Example response:
+    GROQ_API_KEY=your_api_key_here
 
-{
-  "question": "What is this document about?",
-  "answer": "The answer generated from the retrieved document context."
-}
-Configuration Options
-The application includes configurable parameters for:
+*(Never commit your actual API key or other sensitive credentials to GitHub!)*
 
-LLM model
-Embedding model
-Document storage path
-Vector database path
-Chunk size
-Chunk overlap
-Number of retrieved documents
-Future Improvements
-Support for additional document formats.
-Improved error handling.
-Conversation memory.
-Authentication and access control.
-Cloud deployment and remote API access.
-Developed by Raj AI Project
+## 📡 API Endpoints
+**Endpoint:** POST /ask
 
-An AI-powered document question-answering system built with Python and modern AI technologies.
+**Example Request:**
+
+    {
+      "question": "What is this document about?"
+    }
+
+**Example Response:**
+
+    {
+      "question": "What is this document about?",
+      "answer": "The answer generated from the retrieved document context."
+    }
+
+## ⚙️ Configuration Options
+The application includes configurable parameters (such as chunk size, overlap, and top-k retrieval) inside `app/config.py` for fine-tuning the RAG performance.
